@@ -8,6 +8,7 @@ import { globalErrorHandler } from "./middleware/globalErrorhandler";
 import { landlordRoutes } from "./modules/landlord/landlord.route";
 import { propertyRoutes } from "./modules/properties/property.route";
 import { requestRoutes } from "./modules/request/request.route";
+import { adminRoutes } from "./modules/admin/admin.route";
 
 const app: Application = express();
 app.use(cors({
@@ -27,6 +28,7 @@ app.use("/api/auth",authRoutes)
 app.use("/api/landlord",landlordRoutes)
 app.use("/api/properties",propertyRoutes)
 app.use("/api/requests",requestRoutes)
+app.use("/api/admin",adminRoutes)
 
 app.use(globalErrorHandler);
 
