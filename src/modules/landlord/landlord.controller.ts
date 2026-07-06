@@ -19,6 +19,41 @@ const createProperty = catchAsync(async (req:Request,res:Response,next:NextFunct
 
 })
 
+const updateProperty = catchAsync(async (req:Request,res:Response,next:NextFunction)=>{
+
+    const payLoad = req.body
+    const userId = req.user?.userId as string
+    const {propertyId} = req.params
+
+    const result = await landlordService.updateProperty(userId,propertyId as string,payLoad)
+
+    sendResponse(res,{
+      success: true,
+      statusCode: 200,
+      message: "Property updated successfully",
+      data: result,
+    })
+
+})
+
+const deleteProperty = catchAsync(async (req:Request,res:Response,next:NextFunction)=>{
+
+    const userId = req.user?.userId as string
+    const {propertyId} = req.params
+
+    const result = await landlordService.deleteProperty(userId,propertyId as string)
+
+    sendResponse(res,{
+      success: true,
+      statusCode: 200,
+      message: "Property deleted successfully",
+      data: result,
+    })
+
+})
+
 export const landlordController = {
-    createProperty
+    createProperty,
+    updateProperty,
+    deleteProperty
 }
