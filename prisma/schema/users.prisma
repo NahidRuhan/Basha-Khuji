@@ -4,6 +4,9 @@ model Users {
   profileImage String?    @db.VarChar(255)
   email        String     @unique @db.VarChar(255)
   password     String     @db.VarChar(255)
+  phoneNumber  String?    @db.VarChar(20)
+  occupation   String?    @db.VarChar(255)
+  address      String?    @db.VarChar(255)
   role         UserRole
   status       UserStatus @default(ACTIVE)
   createdAt    DateTime   @default(now()) @db.Date
