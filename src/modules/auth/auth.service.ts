@@ -83,5 +83,5 @@ return {
 
 export const authService = {
   loginUser,
-  refreshToken
+  refreshToken,
 };
