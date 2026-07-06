@@ -8,8 +8,7 @@ const router = Router()
 router.post("/properties",auth(UserRole.LANDLORD),landlordController.createProperty)
 router.put("/properties/:propertyId",auth(UserRole.LANDLORD),landlordController.updateProperty)
 router.delete("/properties/:propertyId",auth(UserRole.LANDLORD),landlordController.deleteProperty)
-
-// GET	/api/landlord/requests	Get all rental requests for landlord's properties
-// PATCH	/api/landlord/requests/:id	Approve or reject a rental request
+router.get("/requests",auth(UserRole.LANDLORD),landlordController.getAllRequest)
+router.patch("/requests/:requestId",auth(UserRole.LANDLORD),landlordController.updateRequest)
 
 export const landlordRoutes = router
