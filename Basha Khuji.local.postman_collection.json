@@ -25,13 +25,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/user/register",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/user/register",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "user",
@@ -56,13 +55,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/user/my-profile",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/user/my-profile",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "user",
@@ -92,13 +90,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/auth/login",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/auth/login",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "auth",
@@ -118,13 +115,12 @@
               "raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"asdf1234\"\r\n}"
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/auth/refresh-token",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/auth/refresh-token",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "auth",
@@ -147,13 +143,12 @@
               "raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"asdf1234\"\r\n}"
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/auth/me",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/auth/me",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "auth",
@@ -173,13 +168,12 @@
               "raw": "// {\r\n//     \"email\": \"tenant2@test.com\",\r\n//     \"password\": \"password123\"\r\n// }\r\n{\r\n    \"email\": \"landlord2@test.com\",\r\n    \"password\": \"password123\"\r\n}"
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/auth/logout",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/auth/logout",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "auth",
@@ -209,13 +203,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/landlord/properties",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/landlord/properties",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "landlord",
@@ -240,13 +233,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/landlord/properties/7da15bf7-9d5a-43cd-ae75-0fc179430801",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/landlord/properties/7da15bf7-9d5a-43cd-ae75-0fc179430801",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "landlord",
@@ -263,13 +255,12 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/landlord/properties/314d68a5-094c-4c20-9904-e09384c0dc1e",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/landlord/properties/314d68a5-094c-4c20-9904-e09384c0dc1e",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "landlord",
@@ -293,13 +284,12 @@
               "raw": "{\r\n  \"categoryName\": \"Apartment\",\r\n  \"locationName\": \"Banani\",\r\n  \"propertyName\": \"Ruhan's Apartment\",\r\n  \"price\": 45000,\r\n  \"address\": \"Banani Road 11, House 2\",\r\n  \"description\": \"A nice test apartment.\",\r\n  \"amenities\": [\"Wi-Fi\", \"Gym\"],\r\n  \"vacantFrom\": \"2026-08-01T00:00:00.000Z\",\r\n  \"images\": [\"image1.jpg\", \"image2.jpg\"],\r\n  \"bedroomCount\": 3,\r\n  \"squarefoot\": 1500\r\n}"
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/landlord/requests",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/landlord/requests",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "landlord",
@@ -324,13 +314,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/landlord/requests/10bbf6d1-5384-4f45-b0fa-6912e00dd7e2",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/landlord/requests/10bbf6d1-5384-4f45-b0fa-6912e00dd7e2",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "landlord",
@@ -347,13 +336,12 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/landlord/my-properties",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/landlord/my-properties",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "landlord",
@@ -381,13 +369,12 @@
               "raw": "{\r\n    \"email\": \"sonchoy@gmail.com\",\r\n    \"password\": \"asdf1234\"\r\n}"
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/admin/users",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/admin/users",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "admin",
@@ -412,13 +399,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/admin/users/03c6328e-43b8-4fef-9403-2ec3c4240047",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/admin/users/03c6328e-43b8-4fef-9403-2ec3c4240047",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "admin",
@@ -442,13 +428,12 @@
               "raw": "{\r\n    \"email\": \"sonchoy@gmail.com\",\r\n    \"password\": \"asdf1234\"\r\n}"
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/admin/rentals",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/admin/rentals",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "admin",
@@ -473,13 +458,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/admin/categories",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/admin/categories",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "admin",
@@ -509,13 +493,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/requests",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/requests",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "requests"
@@ -542,13 +525,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/requests",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/requests",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "requests"
@@ -575,13 +557,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/requests/413f6418-6e2e-48f4-8ea4-08171dfb8b42",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/requests/413f6418-6e2e-48f4-8ea4-08171dfb8b42",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "requests",
@@ -602,13 +583,12 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/properties?searchTerm=Wi-Fi",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/properties?searchTerm=Wi-Fi",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "properties"
@@ -684,13 +664,12 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/properties/60e9151b-fe4b-4638-88a5-b6ead7e47ef6",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/properties/60e9151b-fe4b-4638-88a5-b6ead7e47ef6",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "properties",
@@ -763,13 +742,12 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/properties/category",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/properties/category",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "properties",
@@ -856,13 +834,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/payments/create",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/payments/create",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "payments",
@@ -878,13 +855,12 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/payments",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/payments",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "payments"
@@ -899,13 +875,12 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/payments/32def521-842a-4fcf-b488-63e18c334970",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/payments/32def521-842a-4fcf-b488-63e18c334970",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "payments",
@@ -935,13 +910,12 @@
               }
             },
             "url": {
-              "raw": "https://basha-khuji-backend.vercel.app/api/reviews",
-              "protocol": "https",
+              "raw": "http://localhost:8000/api/reviews",
+              "protocol": "http",
               "host": [
-                "basha-khuji-backend",
-                "vercel",
-                "app"
+                "localhost"
               ],
+              "port": "8000",
               "path": [
                 "api",
                 "reviews"
