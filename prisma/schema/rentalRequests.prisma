@@ -8,7 +8,7 @@ model RentalRequests {
   updatedAt  DateTime            @updatedAt @db.Date
 
   user     Users      @relation(fields: [userId], references: [userId])
-  property Properties @relation(fields: [propertyId], references: [propertyId])
+  property Properties @relation(fields: [propertyId], references: [propertyId], onDelete: Cascade)
   payments Payments[]
   review   Reviews?
 

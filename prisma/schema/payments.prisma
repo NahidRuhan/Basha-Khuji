@@ -7,7 +7,7 @@ model Payments {
   paidAt        DateTime?       @db.Date
   provider      PaymentProvider @default(STRIPE)
 
-  rentalRequest RentalRequests @relation(fields: [requestId], references: [requestId])
+  rentalRequest RentalRequests @relation(fields: [requestId], references: [requestId], onDelete: Cascade)
 
   @@index([requestId])
   @@index([status])

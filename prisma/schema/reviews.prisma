@@ -6,7 +6,7 @@ model Reviews {
   createdAt DateTime @default(now()) @db.Date
   updatedAt DateTime @updatedAt @db.Date
 
-  rentalRequest RentalRequests @relation(fields: [requestId], references: [requestId])
+  rentalRequest RentalRequests @relation(fields: [requestId], references: [requestId], onDelete: Cascade)
 
   @@map("Reviews")
 }
