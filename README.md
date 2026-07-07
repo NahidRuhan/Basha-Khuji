@@ -53,7 +53,7 @@ Basha Khuji is a robust backend API for a rental property marketplace. Landlords
 
 ## 📚 API Documentation
 
-Below is a summary of the available endpoints. For full documentation including request bodies, headers, and exact JSON response formats, please see the **[Full API Documentation](./api.md)**.
+Below is a summary of the available endpoints. For full documentation including request bodies, headers, and exact JSON response formats, please see the **[Full API Documentation](./API.md)**.
 
 ### 🔐 Authentication & Users
 | Method | Endpoint | Description |
