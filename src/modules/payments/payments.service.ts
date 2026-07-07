@@ -150,9 +150,64 @@ const getPaymentDetails = async (userId: string, paymentId: string) => {
     return payment;
 };
 
+const handleStripeWebhook = async (rawBody: Buffer, signature: string) => {
+    let event: Stripe.Event;
+
+    try {
+        event = stripe.webhooks.constructEvent(
+            rawBody,
+            signature,
+            config.stripe_webhook_secret_cli
+        );
+    } catch (err: any) {
+        throw new Error(`Webhook Error: ${err.message}`);
+    }
+
+    const session = event.data.object as Stripe.Checkout.Session;
+    const transactionId = session.id;
+
+    if (event.type === 'checkout.session.completed') {
+        const payment = await prisma.payments.findUnique({
+            where: { transactionId }
+        });
+
+        if (payment && payment.status !== PaymentStatus.COMPLETED) {
+            await prisma.$transaction([
+                prisma.payments.update({
+                    where: { transactionId },
+                    data: {
+                        status: PaymentStatus.COMPLETED,
+                        paidAt: new Date()
+                    }
+                }),
+                prisma.rentalRequests.update({
+                    where: { requestId: payment.requestId },
+                    data: {
+                        status: RentalRequestStatus.ACTIVE
+                    }
+                })
+            ]);
+        }
+    } else if (event.type === 'checkout.session.expired' || event.type === 'checkout.session.async_payment_failed') {
+        const payment = await prisma.payments.findUnique({
+            where: { transactionId }
+        });
+
+        if (payment && payment.status === PaymentStatus.PENDING) {
+            await prisma.payments.update({
+                where: { transactionId },
+                data: {
+                    status: PaymentStatus.FAILED
+                }
+            });
+        }
+    }
+};
+
 export const paymentsService = {
     createPayment,
     confirmPayment,
     getPaymentHistory,
-    getPaymentDetails
+    getPaymentDetails,
+    handleStripeWebhook
 };

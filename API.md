@@ -1129,49 +1129,7 @@ Authorization: Bearer <accessToken>
 - **500 Internal Server Error**: Rental request not found / must be APPROVED
 - **500 Internal Server Error**: Payment already completed
 
-### 2. Confirm Payment
-
-- **Endpoint**: `/api/payments/confirm`
-- **Method**: `POST`
-- **Description**: Confirms a successful Stripe checkout session. Updates payment to COMPLETED and rental request to ACTIVE. Accessible to `TENANT`.
-
-**Request Headers:**
-
-```text
-Authorization: Bearer <accessToken>
-```
-
-**Request Body:**
-
-```json
-{
-  "transactionId": "cs_test_a1b2c3d4"
-}
-```
-
-**Success Response:**
-
-- **Code:** `200 OK`
-- **Content:**
-
-```json
-{
-  "success": true,
-  "statusCode": 200,
-  "message": "Payment confirmed successfully",
-  "data": {
-    "paymentId": "5c9a99f8-7a8c-47c6-a616-28fdc5a0775f",
-    "requestId": "689ad4c7-764e-40e7-89b4-0ce4f4291b9c",
-    "transactionId": "cs_test_a1b2c3d4",
-    "amount": "45000",
-    "status": "COMPLETED",
-    "paidAt": "2026-07-07T12:00:00.000Z",
-    "provider": "STRIPE"
-  }
-}
-```
-
-### 3. Get Payment History
+### 2. Get Payment History
 
 - **Endpoint**: `/api/payments`
 - **Method**: `GET`
@@ -1201,7 +1159,7 @@ Authorization: Bearer <accessToken>
 }
 ```
 
-### 4. Get Payment Details
+### 3. Get Payment Details
 
 - **Endpoint**: /api/payments/:id
 - **Method**: GET
@@ -1245,6 +1203,32 @@ Authorization: Bearer <accessToken>
   }
 }
 ```
+
+### 4. Webhook (Stripe)
+
+- **Endpoint**: /api/payments/webhook
+- **Method**: POST
+- **Description**: Stripe webhook endpoint to automatically confirm a successful checkout session asynchronously.
+
+**Request Headers:**
+
+`	ext
+stripe-signature: <signature>
+`
+
+**Request Body:**
+*Must be raw binary/buffer payload from Stripe.*
+
+**Success Response:**
+
+- **Code:** 200 OK
+- **Content:**
+
+`json
+{
+  "received": true
+}
+`
 
 ## Reviews APIs
 
@@ -1290,3 +1274,4 @@ Authorization: Bearer <accessToken>
   }
 }
 ```
+

@@ -58,9 +58,19 @@ const getPaymentDetails = catchAsync(async (req: Request, res: Response, next: N
     });
 });
 
+const stripeWebhook = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const signature = req.headers['stripe-signature'] as string;
+    
+    // req.body should be a Buffer here due to express.raw() in app.ts
+    await paymentsService.handleStripeWebhook(req.body, signature);
+
+    res.json({ received: true });
+});
+
 export const paymentsController = {
     createPayment,
     confirmPayment,
     getPaymentHistory,
-    getPaymentDetails
+    getPaymentDetails,
+    stripeWebhook
 };

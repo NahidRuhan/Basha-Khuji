@@ -13,11 +13,16 @@ import { paymentsRoute } from "./modules/payments/payments.route";
 import { reviewsRoute } from "./modules/reviews/reviews.route";
 import { notFound } from "./middleware/notFound";
 
+import { paymentsController } from "./modules/payments/payments.controller";
+
 const app: Application = express();
 app.use(cors({
     origin: config.app_url,
     credentials: true,
 }));
+
+app.post("/api/payments/webhook", express.raw({ type: 'application/json' }), paymentsController.stripeWebhook);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
