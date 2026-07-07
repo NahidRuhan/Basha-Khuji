@@ -7,6 +7,7 @@ const router = Router()
 
 router.post("/login",authController.loginUser)
 router.post("/refresh-token",authController.refreshToken)
+router.post("/logout",authController.logoutUser)
 router.get("/me", auth(), authController.getCurrentUser)
 
 export const authRoutes = router
