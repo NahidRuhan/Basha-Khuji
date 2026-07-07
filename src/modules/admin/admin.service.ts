@@ -1,5 +1,5 @@
 import { prisma } from "../../lib/prisma"
-import { IChangeUserStatus } from "./admin.interface";
+import { IChangeUserStatus, ICreateCategory } from "./admin.interface";
 
 const getAllUser = async () => {
     const users = await prisma.users.findMany({
@@ -37,9 +37,28 @@ const getAllRental = async () => {
     return rentals;
 }
 
+const createCategory = async (payLoad: ICreateCategory) => {
+    const category = await prisma.categories.findFirst({
+        where: {
+            categoryName: payLoad.categoryName
+        }
+    })
+
+    if(category){
+        throw new Error("Category already exists");
+    }
+
+    const newCategory = await prisma.categories.create({
+        data:payLoad
+    })
+
+    return newCategory
+}
+
 export const adminService = {
     getAllUser,
     changeUserStatus,
     getAllProperty,
-    getAllRental
+    getAllRental,
+    createCategory
 }

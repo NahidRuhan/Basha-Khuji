@@ -53,9 +53,21 @@ const getAllRental = catchAsync(async (req: Request, res: Response, next: NextFu
     })
 })
 
+const createCategory = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const category = await adminService.createCategory(req.body)
+
+    sendResponse(res,{
+        success: true,
+        statusCode: 200,
+        message: "Category created successfully!",
+        data: {category}
+    })
+})
+
 export const adminController = {
     getAllUser,
     changeUserStatus,
     getAllProperty,
-    getAllRental
+    getAllRental,
+    createCategory
 }
