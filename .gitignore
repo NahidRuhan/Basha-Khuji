@@ -3,3 +3,9 @@ dist
 generated
 .env
 /generated/prisma
+
+
+test-payments.ts
+test-payment-gets.ts
+test-reviews.ts
+requirement.md

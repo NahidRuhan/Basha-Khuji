@@ -1,4 +1,4 @@
-# Rent Nest API Documentation
+# Basha Khuji API Documentation
 
 ## Auth & Users
 
@@ -80,6 +80,7 @@
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Validation Error (e.g., Email and Password are required)
 - **400 Bad Request**: Invalid credentials (Prisma error)
 
@@ -112,6 +113,7 @@ Cookie: refreshToken=eyJhbGciOiJIUzI...
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Refresh token is required
 - **500 Internal Server Error**: Invalid refresh token
 
@@ -147,6 +149,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: You are not logged in. Please log in to access this resource.
 - **500 Internal Server Error**: Forbidden. You don't have permission to access this resource.
 
@@ -254,15 +257,9 @@ Authorization: Bearer <accessToken>
     "address": "Banani Road 11, House 2",
     "description": "A nice test apartment.",
     "isAvailable": true,
-    "amenities": [
-      "Wi-Fi",
-      "Gym"
-    ],
+    "amenities": ["Wi-Fi", "Gym"],
     "vacantFrom": "2026-08-01T00:00:00.000Z",
-    "images": [
-      "image1.jpg",
-      "image2.jpg"
-    ],
+    "images": ["image1.jpg", "image2.jpg"],
     "bedroomCount": 3,
     "squarefoot": 1500,
     "createdAt": "2026-07-07T00:00:00.000Z",
@@ -272,6 +269,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Missing required field: {fieldName}
 - **500 Internal Server Error**: Category not found / Location not found
 - **500 Internal Server Error**: Forbidden. You don't have permission to access this resource. (If user is not a LANDLORD)
@@ -329,6 +327,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Property not found
 - **500 Internal Server Error**: You are not authorized to update this property
 - **500 Internal Server Error**: Category not found / Location not found
@@ -365,13 +364,9 @@ Authorization: Bearer <accessToken>
     "address": "123 Delete St",
     "description": "Temp description",
     "isAvailable": true,
-    "amenities": [
-      "Wi-Fi"
-    ],
+    "amenities": ["Wi-Fi"],
     "vacantFrom": "2026-08-01T00:00:00.000Z",
-    "images": [
-      "img.jpg"
-    ],
+    "images": ["img.jpg"],
     "bedroomCount": 1,
     "squarefoot": 500,
     "createdAt": "2026-07-07T00:00:00.000Z",
@@ -381,6 +376,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Property not found
 - **500 Internal Server Error**: You are not authorized to delete this property
 - **500 Internal Server Error**: Cannot delete property that has active rental requests. Please resolve or delete the requests first.
@@ -434,6 +430,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Forbidden. You don't have permission to access this resource. (If user is not a LANDLORD)
 
 ### 5. Update Rental Request Status
@@ -479,6 +476,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Missing required field: status
 - **500 Internal Server Error**: Invalid status. Must be one of: PENDING, APPROVED, REJECTED, ACTIVE, COMPLETED
 - **500 Internal Server Error**: Request not found
@@ -529,6 +527,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: You are not logged in. Please log in to access this resource.
 - **500 Internal Server Error**: Forbidden. You don't have permission to access this resource. (If user is not an ADMIN)
 
@@ -581,6 +580,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Missing required field: status
 - **500 Internal Server Error**: Invalid status. Must be one of: ACTIVE, BANNED
 - **500 Internal Server Error**: User not found
@@ -644,6 +644,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: You are not logged in. Please log in to access this resource.
 - **500 Internal Server Error**: Forbidden. You don't have permission to access this resource.
 
@@ -689,6 +690,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Category already exists
 - **500 Internal Server Error**: You are not logged in. Please log in to access this resource.
 - **500 Internal Server Error**: Forbidden. You don't have permission to access this resource.
@@ -739,6 +741,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Missing required fields: propertyId and message are required
 - **500 Internal Server Error**: Property not found
 - **500 Internal Server Error**: You already have a pending request for this property
@@ -787,6 +790,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: You are not logged in. Please log in to access this resource.
 - **500 Internal Server Error**: Forbidden. You don't have permission to access this resource.
 
@@ -830,6 +834,7 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Request not found
 - **500 Internal Server Error**: You are not logged in. Please log in to access this resource.
 - **500 Internal Server Error**: Forbidden. You don't have permission to access this resource.
@@ -843,6 +848,7 @@ Authorization: Bearer <accessToken>
 - **Description**: Retrieves a paginated list of all properties. Supports advanced filtering, partial search, and sorting via query parameters.
 
 **Query Parameters (All Optional):**
+
 - `searchTerm`: Partial match for `propertyName`, `address`, `description`, or exact match in `amenities`
 - `categoryName`: Filter by exact category name
 - `locationName`: Filter by exact location name
@@ -987,4 +993,215 @@ Authorization: Bearer <accessToken>
 ```
 
 **Error Responses:**
+
 - **500 Internal Server Error**: Property not found
+
+## Payments APIs
+
+### 1. Create Payment Session
+
+- **Endpoint**: `/api/payments/create`
+- **Method**: `POST`
+- **Description**: Creates a Stripe checkout session for an APPROVED rental request. Accessible only to users with the `TENANT` role.
+
+**Request Headers:**
+
+```text
+Authorization: Bearer <accessToken>
+```
+
+**Request Body:**
+
+```json
+{
+  "requestId": "689ad4c7-764e-40e7-89b4-0ce4f4291b9c"
+}
+```
+
+**Success Response:**
+
+- **Code:** `201 CREATED`
+- **Content:**
+
+```json
+{
+  "success": true,
+  "statusCode": 201,
+  "message": "Payment session created successfully",
+  "data": {
+    "checkoutUrl": "https://checkout.stripe.com/c/pay/cs_test_...",
+    "transactionId": "cs_test_a1b2c3d4",
+    "paymentId": "5c9a99f8-7a8c-47c6-a616-28fdc5a0775f"
+  }
+}
+```
+
+**Error Responses:**
+
+- **500 Internal Server Error**: Rental request not found / must be APPROVED
+- **500 Internal Server Error**: Payment already completed
+
+### 2. Confirm Payment
+
+- **Endpoint**: `/api/payments/confirm`
+- **Method**: `POST`
+- **Description**: Confirms a successful Stripe checkout session. Updates payment to COMPLETED and rental request to ACTIVE. Accessible to `TENANT`.
+
+**Request Headers:**
+
+```text
+Authorization: Bearer <accessToken>
+```
+
+**Request Body:**
+
+```json
+{
+  "transactionId": "cs_test_a1b2c3d4"
+}
+```
+
+**Success Response:**
+
+- **Code:** `200 OK`
+- **Content:**
+
+```json
+{
+  "success": true,
+  "statusCode": 200,
+  "message": "Payment confirmed successfully",
+  "data": {
+    "paymentId": "5c9a99f8-7a8c-47c6-a616-28fdc5a0775f",
+    "requestId": "689ad4c7-764e-40e7-89b4-0ce4f4291b9c",
+    "transactionId": "cs_test_a1b2c3d4",
+    "amount": "45000",
+    "status": "COMPLETED",
+    "paidAt": "2026-07-07T12:00:00.000Z",
+    "provider": "STRIPE"
+  }
+}
+```
+
+### 3. Get Payment History
+
+- **Endpoint**: `/api/payments`
+- **Method**: `GET`
+- **Description**: Retrieves all payments associated with the tenant.
+
+**Request Headers:**
+
+```text
+Authorization: Bearer <accessToken>
+```
+
+**Success Response:**
+
+- **Code:** `200 OK`
+- **Content:**
+
+```json
+{
+  "success": true,
+  "statusCode": 200,
+  "message": "Payment history fetched successfully",
+  "data": [
+    {
+       // Payment object with related RentalRequest and Property details
+    }
+  ]
+}
+```
+
+
+### 4. Get Payment Details
+
+- **Endpoint**: /api/payments/:id
+- **Method**: GET
+- **Description**: Retrieves detailed information for a specific payment by its ID, including the associated rental request and property details. Accessible to TENANT.
+
+**Request Headers:**
+
+`	ext
+Authorization: Bearer <accessToken>
+`
+
+**Success Response:**
+
+- **Code:** 200 OK
+- **Content:**
+
+`json
+{
+  "success": true,
+  "statusCode": 200,
+  "message": "Payment details fetched successfully",
+  "data": {
+    "paymentId": "547a4ffa-6ce5-4593-ba58-41d3fd1873af",
+    "requestId": "8e14e8d3-952c-4b51-bcc5-f0e6a0990712",
+    "transactionId": "cs_test_a1UZ4fY...",
+    "amount": "75861",
+    "status": "COMPLETED",
+    "paidAt": "2026-07-07T10:00:00.000Z",
+    "provider": "STRIPE",
+    "rentalRequest": {
+      "requestId": "8e14e8d3-952c-4b51-bcc5-f0e6a0990712",
+      "userId": "721d970e-0db5-4558-961f-64637ff562e7",
+      "propertyId": "1aa97d7d-7ae0-4cf3-a6da-c42a68175c99",
+      "status": "ACTIVE",
+      "property": {
+        "propertyName": "Beautiful Townhouse...",
+        "price": "75861",
+        "address": "House 62, Road 2"
+      }
+    }
+  }
+}
+`
+
+## Reviews APIs
+
+### 1. Create Review
+
+- **Endpoint**: `/api/reviews`
+- **Method**: `POST`
+- **Description**: Submits a review for an ACTIVE or COMPLETED rental request. Accessible to `TENANT`.
+
+**Request Headers:**
+
+```text
+Authorization: Bearer <accessToken>
+```
+
+**Request Body:**
+
+```json
+{
+  "requestId": "689ad4c7-764e-40e7-89b4-0ce4f4291b9c",
+  "review": "The apartment is wonderful and the landlord is very responsive!",
+  "rating": 5
+}
+```
+
+**Success Response:**
+
+- **Code:** `201 CREATED`
+- **Content:**
+
+```json
+{
+  "success": true,
+  "statusCode": 201,
+  "message": "Review created successfully",
+  "data": {
+    "reviewId": "b1b2c3d4-e5f6-7g8h-9i0j",
+    "requestId": "689ad4c7-764e-40e7-89b4-0ce4f4291b9c",
+    "review": "The apartment is wonderful and the landlord is very responsive!",
+    "rating": 5,
+    "createdAt": "2026-07-07T12:00:00.000Z",
+    "updatedAt": "2026-07-07T12:00:00.000Z"
+  }
+}
+```
+
+
