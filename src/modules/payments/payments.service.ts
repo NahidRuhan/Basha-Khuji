@@ -157,7 +157,7 @@ const handleStripeWebhook = async (rawBody: Buffer, signature: string) => {
         event = stripe.webhooks.constructEvent(
             rawBody,
             signature,
-            config.stripe_webhook_secret_cli
+            config.stripe_webhook_secret
         );
     } catch (err: any) {
         throw new Error(`Webhook Error: ${err.message}`);
