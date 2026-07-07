@@ -211,7 +211,7 @@ const updateRequest = async (requestId:string, userId:string,payLoad:{status:Ren
     }
   })
 
-  if(payLoad.status == RentalRequestStatus.APPROVED || payLoad.status == RentalRequestStatus.ACTIVE || payLoad.status == RentalRequestStatus.COMPLETED ){
+  if(payLoad.status == RentalRequestStatus.APPROVED || payLoad.status == RentalRequestStatus.ACTIVE ){
     await prisma.properties.update({
       where:{
         propertyId: request.propertyId
@@ -234,6 +234,15 @@ const updateRequest = async (requestId:string, userId:string,payLoad:{status:Ren
         }
       });
     }
+  } else if (payLoad.status == RentalRequestStatus.COMPLETED || payLoad.status == RentalRequestStatus.REJECTED) {
+    await prisma.properties.update({
+      where:{
+        propertyId: request.propertyId
+      },
+      data:{
+        isAvailable: true
+      }
+    })
   }
 
   return updatedRequest
