@@ -160,13 +160,14 @@ const deleteProperty = async (userId:string,propertyId:string)=>{
     throw new Error("You are not authorized to delete this property")
   }
 
-  const activeRequests = property.rentalRequests?.filter(req => 
+  const blockingRequests = property.rentalRequests?.filter(req => 
+    req.status === RentalRequestStatus.PENDING ||
     req.status === RentalRequestStatus.APPROVED || 
     req.status === RentalRequestStatus.ACTIVE
   ) || [];
 
-  if (activeRequests.length > 0) {
-    throw new Error("Cannot delete property that has approved or active rental requests. Please resolve them first.");
+  if (blockingRequests.length > 0) {
+    throw new Error("Cannot archive property. Please resolve all pending, approved, or active rental requests first.");
   }
 
   const deletedProperty = await prisma.properties.update({

@@ -356,7 +356,7 @@ Authorization: Bearer <accessToken>
 
 - **Endpoint**: `/api/landlord/properties/:propertyId`
 - **Method**: `PATCH`
-- **Description**: Soft-deletes (archives) an existing property. Accessible only to the landlord who owns the property. Fails if there are active rental requests associated with the property. The property will no longer appear in public searches or landlord listings, but its historical data remains preserved.
+- **Description**: Soft-deletes (archives) an existing property. Accessible only to the landlord who owns the property. Fails if there are pending, approved, or active rental requests associated with the property. The property will no longer appear in public searches or landlord listings, but its historical data remains preserved.
 
 **Request Headers:**
 
